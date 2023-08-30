@@ -5226,7 +5226,7 @@ local args = {
 
 workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
 end
-wait(8)
+wait(9)
 end)
 end
 end)
@@ -5477,7 +5477,7 @@ local args = {
 
 workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
 end
-wait(8)
+wait(9)
 end)
 end
 end)
