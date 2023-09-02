@@ -1,5 +1,24 @@
 local Pedo = {
-    1135910299,520944,43247021,2350183594,1338963426,1276541545,587649463,245586741,679804290,174941504,174941504}
+    1135910299, -- Havelic
+    520944, -- Oblivic
+    43247021, -- BowTiedPony
+    2350183594, -- icydragonwingsis
+    1338963426, -- happypandamagic2
+    1276541545, -- VanitasThePlague
+    587649463, -- happypandamagic
+    245586741, -- Tiptop98
+    174941504, -- FoxKingFab
+    136099207,-- CudlessTheCat
+    94825741, -- NATSUDRAGN331
+    358051152, -- VortexFragmented
+    529455640, -- vlonedd
+    281482099, -- Quixotize
+    355207559, -- Elianmc1s
+    5084487, -- Americanflag
+    928623624, -- TrashPanda2361
+    30049170, -- Farquanetta
+    474452017 -- Bige0n
+    }
 
 for _, v in pairs(game:GetService("Players"):GetPlayers()) do
     for _, v1 in pairs(Pedo) do
@@ -12,7 +31,7 @@ end
 game:GetService("Players").PlayerAdded:Connect(function(r)
     for _, v in pairs(Pedo) do
         if r.UserId == v then
-            game:GetService("Players").LocalPlayer:Kick("Admin has joined the server")
+            game:GetService("Players").LocalPlayer:Kick("Admin or Staff has joined the server")
         end
     end
 end)  
@@ -2302,11 +2321,113 @@ if _G.WhiteListed then
             end
             return Tabs
             end
-                local win = Flux:Window("Iren Hub (D2)", "MADE BY IRENKISS", Color3.fromRGB(0,166,58), Enum.KeyCode.F2)
+            --Properties:
+
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+            args[6] = 100
+            return aaxc(self, unpack(args))
+        end
+    end
+    return aaxc(self, ...)
+end)
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" or args[3] == "Create" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+    
+    function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+                local win = Flux:Window("Iren Hub (E22)", "MADE BY IRENKISS", Color3.fromRGB(0,166,58), Enum.KeyCode.F2)
                 Flux:Notification("ANTI-STAFF AUTOMATICALLY TURNED ON PRESS F2 TO HIDE/SHOW GUI","OK")
         local page2 = win:Tab("FARMING", "http://www.roblox.com/asset/?id=9391995844")
         local page3 = win:Tab("ISLAND/TELEPORT", "http://www.roblox.com/asset/?id=9391995844")
-        local page9 = win:Tab("FRUIT/DEF FARM", "http://www.roblox.com/asset/?id=9391995844")
+        local page9 = win:Tab("KILL/DEF FARM", "http://www.roblox.com/asset/?id=9391995844")
         local page4 = win:Tab("SHOP", "http://www.roblox.com/asset/?id=9391995844")
         local page5 = win:Tab("PLAYER", "http://www.roblox.com/asset/?id=9391995844")
         local page7 = win:Tab("MOB BRING", "http://www.roblox.com/asset/?id=9391995844")
@@ -2357,44 +2478,6 @@ if _G.WhiteListed then
                 table.insert(Wapon, v.Name)
             end
         end
-        page1:Line()
-        page1:Label("┇ ANTI STUN ┇")
-                page1:Line()
-                            page1:Toggle("Anti Stun", false, function(bool)
-        getgenv().antistun = bool
-        while getgenv().antistun do wait()
-            pcall(function()
-local plr = game.Players.LocalPlayer.Character
-    repeat
-plr.BurnMagmaOverTime.Value = true
-plr.BurnOverTime.Value = true
-plr.CandyTouched.Value = true
-plr.Cheshire.Value = true
-plr.ChillyPunched.Value = true
-plr["DF_Disabled"].Value = false
-plr.GasPoison.Value = true
-plr.GasAirless.Value = true
-plr.GravityCrushed.Value = true
-plr.HeartStolen.Value = true
-plr.Hobbied.Value = true
-plr.HotBody.Value = true
-plr.HypnosisOnCooldown.Value = true
-plr.LoveStunned.Value = true
-plr.Mored.Value = true
-plr.Negative.Value = true
-plr.OpeSevered.Value = true
-plr.Returned.Value = true
-plr.RumbleStun.Value = true
-plr.SanguineVampiris.Value = true
-plr.SnowTouched.Value = true
-plr.Stringing.Value = true
-plr.VenomDoT.Value = true
-wait(0.06)
-    until plr.Humanoid.Health == 0
-
-end)
-end
-end)
     page9:Line()
         page9:Label("┇ WEAPON SPAM (YORU FOR DEF FARMING) ┇")
     page9:Line()
@@ -2458,7 +2541,7 @@ end)
     page9:Line()
         page9:Label("┇ QUAKE FARM ┇")
     page9:Line()
-    page9:Toggle("Quake Farm" , false, function(quakefarm)  --Quake
+    page9:Toggle("Quake Farm (Far Distance)" , false, function(quakefarm)  --Quake
 getgenv().quakefarm1 = quakefarm
         while getgenv().quakefarm1 do wait()
     pcall(function()
@@ -2511,7 +2594,7 @@ wait(0.1)
 game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(v,"QuakePower4", "StopCharging",workspace.IslandCaver.Stones.Stone,CFrame.new(Vector3.new(-1270.039794921875, 263.09088134765625, -1793.016357421875), Vector3.new(0.32165566086769104, -0.4306340515613556, -0.8432627320289612)),100,Vector3.new(-1270.039794921875, 263.09088134765625, -1793.016357421875), Vector3.new(0.32165566086769104, -0.4306340515613556, -0.8432627320289612))
 wait(0.1)
 local args = {
-    [1] = 939731.82,
+    [1] = v,
     [2] = "QuakePower4",
     [3] = "StopCharging",
     [4] = workspace:WaitForChild("IslandCaver"):WaitForChild("Stones"):WaitForChild("Stone"),
@@ -2547,7 +2630,7 @@ local args = {
 game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
 wait(0.1)
 local args = {
-    [1] = 939731.82,
+    [1] = v,
     [2] = "QuakePower4",
     [3] = "StopCharging",
     [4] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
@@ -2746,10 +2829,55 @@ game:GetService("Workspace").LocalPlayer.CharacterTrait.Health = 0
             end
             end)
     page9:Line()
+        page9:Label("┇ QUAKE FARM TP METHOD ┇")
+    page9:Line()
+page9:Toggle("Quake Farm (Use Skill To Active)",false, function(tpfarmquake)
+getgenv().quakeeeeeee = tpfarmquake
+while getgenv().quakeeeeeee do wait()
+pcall(function()
+        if getgenv().quakeeeeeee then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            function round(num, numDecimalPlaces)
+                local mult = 10 ^ (numDecimalPlaces or 0)
+                return math.floor(num * mult + 0.6) / mult
+            end
+
+            local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+            Xx = humanoid.Position.x-- round(humanoid.Position.x, 0)
+            Yy = humanoid.Position.y--round(humanoid.Position.y, 0)
+            Zz = humanoid.Position.z--round(humanoid.Position.z, 0)
+local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   wait()
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = Mouse.Hit,
+                [6] = 100,
+                [7] = Vector3.new(Xx, Yy, Zz)
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   wait(0.5)
+   end
+   end)
+   end
+   end)
+   page9:Line()
         page9:Label("┇ LIGHT FARM ┇")
     page9:Line()
 
-page9:Toggle("Light Farm Teleport To Mob",false, function(tpmodelight)
+page9:Toggle("Light Farm (Use SKill 2 or 3 To Active) ",false, function(tpmodelight)
 getgenv().lightttt = tpmodelight
         while getgenv().lightttt do wait()
     pcall(function()
@@ -2772,13 +2900,666 @@ end)
 end
 end)
 page9:Line()
-page9:Label("┇ OTHER FRUIT FARM ┇")
+page9:Label("┇ MAGMA FARM ┇")
 page9:Line()
-farmdis = 5
-page9:Slider("Farm Distance", 0,20, 5,function(dis)
+page9:Toggle("Magma Farm (Use Ball To Active)", false, function(vcmmttb)
+ getgenv().autofarmmag = vcmmttb
+while getgenv().autofarmmag do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "MagmaPower1",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+    [7] = "Right"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Magma.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "MagmaPower1",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Magma.RemoteEvent:FireServer(unpack(args))
+wait(0.1)
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ GAS FARM ┇")
+page9:Line()
+page9:Toggle("Gas Farm (Use Gas Bomb To Active)", false, function(vcmmttb)
+ getgenv().autofarmgas = vcmmttb
+while getgenv().autofarmgas do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "GasPower4",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandKai"):WaitForChild("Folder"):WaitForChild("FourIce"),
+    [7] = "Right"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "GasPower4",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandKai"):WaitForChild("Folder"):WaitForChild("FourIce"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent:FireServer(unpack(args))
+
+wait(0.1)
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ FLARE FARM ┇")
+page9:Line()
+page9:Toggle("Flare Farm (Use Ball To Active)", false, function(retref)
+ getgenv().autofarmflare = retref
+while getgenv().autofarmflare do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "FlarePower2",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Union"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "FlarePower2",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Union"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+
+wait(0.1)
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ BOMB FARM ┇")
+page9:Line()
+page9:Toggle("Bomb Farm Skill 1", false, function(retrefff)
+ getgenv().autofarmbom = retrefff
+while getgenv().autofarmbom do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower1",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower1",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+
+wait(0.1)
+end)
+end
+end)
+page9:Toggle("Bomb Farm Skill 2", false, function(retreffff)
+ getgenv().autofarmbom2 = retreffff
+while getgenv().autofarmbom2 do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower2",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait(0.1)
+end)
+end
+end)
+page9:Toggle("Bomb Farm Skill 4", false, function(retreftff)
+ getgenv().autofarmbom3 = retreftff
+while getgenv().autofarmbom3 do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower4",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower4",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+
+wait(0.1)
+end)
+end
+end)
+page9:Toggle("Bomb Farm Skill 5", false, function(retreffft)
+ getgenv().autofarmbom4 = retreffft
+while getgenv().autofarmbom4 do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower5",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower5",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+
+wait(0.1)
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ PLASMA FARM ┇")
+page9:Line()
+page9:Toggle("Plasma Farm (Use SKill 4 To Active)", false, function(concak)
+getgenv().autofarmplas = concak
+while getgenv().autofarmplas do wait()
+pcall(function()
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "StartCharging",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+                    wait(0)
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+            
+        end)
+    end
+end)
+page9:Line()
+page9:Label("┇ CHILLY FARM ┇")
+page9:Line()
+page9:Toggle("Chilly Farm (Use Skill 5 To Active)", false, function(cuttvcl)
+getgenv().ch = cuttvcl
+while getgenv().ch do wait()
+pcall(function()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "ChillyPower5",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandPirate"):WaitForChild("Base"):WaitForChild("Beach"),
+    [7] = "Right"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "ChillyPower5",
+    [3] = "StopCharging",
+    [4] = CFrame.new(-1084.59033, -9763.44336, 501.375885, -0, 0.995015204, 0.0997241139, 0.0880244896, -0.099337019, 0.991152883, 0.996118307, 0.00877816416, -0.08758571),
+    [5] = workspace:WaitForChild("IslandPirate"):WaitForChild("Base"):WaitForChild("Beach"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+
+wait(0.5)
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ SAND FARM ┇")
+page9:Line()
+farmsand = 5
+page9:Slider("Farm Distance", 0,15, 5,function(distt)
+farmsand = distt
+end)
+page9:Toggle("Sand Farm (Use Skill 2 To Active)", false, function(cutvcl)
+getgenv().e = cutvcl
+while getgenv().e do wait()
+pcall(function()
+ for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+            if string.find(v.Name, "Crab") or string.find(v.Name, "Bandit") or string.find(v.Name, "Thief") 
+              or string.find(v.Name, " Vokun") or string.find(v.Name, "Fred") or string.find(v.Name, "Frey") or string.find(v.Name, "Fri") or string.find(v.Name, "Fru") or string.find(v.Name, "Angry") 
+             or string.find(v.Name, "Cave ") or string.find(v.Name, "Thug") or string.find(v.Name, "Gunslinger") or string.find(v.Name, "Buster") or string.find(v.Name, "Bucky") or string.find(v.Name, "Bruno") or string.find(v.Name, "Boar")
+              and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+repeat wait()
+pcall(function()
+if getgenv().e == true and v.Humanoid.Health > 0 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(farmsand,15,0)
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "SandPower8",
+    [3] = "Create",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandPirate"):WaitForChild("Base"):WaitForChild("Beach")
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Sand.RemoteEvent:FireServer(unpack(args))
+
+end
+end)
+until v.Humanoid.Health <= 0 or not getgenv().e
+end
+end
+end)
+end
+end)
+page9:Line()
+page9:Label("┇ VAMP FARM ┇")
+page9:Line()
+farmvamp = 15
+page9:Slider("Farm Distance", 0,20, 15,function(disttt)
+farmvamp = disttt
+end)
+page9:Toggle("Vamp Farm (Use Skill 5 To Active)", false, function(cutvcll)
+getgenv().t = cutvcll
+while getgenv().t do wait()
+pcall(function()
+ for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+            if string.find(v.Name, "Crab") or string.find(v.Name, "Bandit") or string.find(v.Name, "Thief") 
+              or string.find(v.Name, " Vokun") or string.find(v.Name, "Fred") or string.find(v.Name, "Frey") or string.find(v.Name, "Fri") or string.find(v.Name, "Fru") or string.find(v.Name, "Angry") 
+             or string.find(v.Name, "Cave ") or string.find(v.Name, "Thug") or string.find(v.Name, "Gunslinger") or string.find(v.Name, "Boar")
+              and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+repeat wait()
+pcall(function()
+if getgenv().t == true and v.Humanoid.Health > 0 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,farmvamp,0)
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "VampirePower5",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-391.38922119140625, 213, -232.140625, 0.5274614095687866, -0.7214826345443726, 0.4486061632633209, -1.4901161193847656e-08, 0.5280334949493408, 0.8492236733436584, -0.8495790362358093, -0.44793272018432617, 0.2785172760486603),
+    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+    [9] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Vampire.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "VampirePower5",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Vampire.RemoteEvent:FireServer(unpack(args))
+
+end
+end)
+until v.Humanoid.Health <= 0 or not getgenv().t
+end
+end
+end)
+end
+end)
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if getgenv().e or getgenv().c or getgenv().a or getgenv().t or KillPlayer then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  getgenv().e == false or getgenv().c == false or getgenv().a == false or getgenv().t == false or KillPlayer == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
+page9:Line()
+page9:Label("┇ CANNON FARM ┇")
+page9:Line()
+page9:Toggle("Cannon Farm Mob", false, function(daxc)
+    _G.autocannonslow = daxc
+end)
+page9:Toggle("Cannon Farm All Player", false, function(daxccc)
+    _G.autocannonplr = daxccc
+    end)
+    spawn(function() -- autofarm teleport cannon
+    while wait(0) do
+        pcall(function()
+            if _G.autocannonplr then
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.Transparency = 0.9
+                    	v.Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.Character.HumanoidRootPart.CanCollide = false
+                        v.Character.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,5,-15)
+                        if v.Character.Humanoid.Health == 0 then
+                            v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
+                            v.Character.HumanoidRootPart.Transparency = 1
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon then
+                local toolname = "Cannon Ball"
+                local Plr = game:GetService("Players").LocalPlayer
+                wait(0.75)
+                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
+                    local tool = Plr.Backpack:FindFirstChild(toolname)
+                    Plr.Character.Humanoid:EquipTool(tool)
+                    wait(0.75)
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannonslow or _G.autocannonplr then
+                local toolname = "Cannon Ball"
+                local Plr = game:GetService("Players").LocalPlayer
+                wait(0.5)
+                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
+                    local tool = Plr.Backpack:FindFirstChild(toolname)
+                    Plr.Character.Humanoid:EquipTool(tool)
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr or _G.autocannonslow then
+                local args = {
+                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+                }
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
+                wait(0)
+                local args = {
+                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+                }
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
+                wait(0)
+                if game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall") then
+                    game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall").CanCollide = false
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr or _G.autocannonslow then
+                repeat task.wait(0)
+                    for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
+                        if v.Name == "CannonBall" then
+                            v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
+                            v.CanCollide = false
+                            if not v:FindFirstChild("BodyClip") then
+                                local Noclip = Instance.new("BodyVelocity")
+                                Noclip.Name = "BodyClip"
+                                Noclip.Parent = v
+                                Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                                Noclip.Velocity = Vector3.new(0,20,0)
+                            end
+                        end
+                    end
+                until _G.autocannon == false or _G.autocannonplr == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon and game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                task.wait(1)
+                for i=1,2 do
+                    game:GetService("Players").LocalPlayer.Character.Weapons:FireServer()
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(15) do
+        pcall(function()
+            if _G.autocannon then
+                task.wait(0.1)
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                        if v.Name == "Cannon Ball" then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon  or _G.autocannonplr or _G.autocannonslow then
+                task.wait(0.1)
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                        if v.Name ~= "Cannon" and v.Name ~= "Cannon Ball" then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autocannon or  _G.autocannonplr  or _G.autocannonslow then
+                fireclickdetector(workspace.Island11.CentralBuilding.Doors.Button.Button.ClickDetector)
+                task.wait(0)
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
+end)
+spawn(function() -- autofarm cannon
+    while wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonslow then
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, " Boar")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Crab")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Angry ") 
+                    or string.find(v.Name, "Bandit") 
+                    or string.find(v.Name, "Thief")
+                    or string.find(v.Name, "Bruno") 
+                    or string.find(v.Name, "Bucky") 
+                    or string.find(v.Name, " Vokun") 
+                    or string.find(v.Name, "Freddy")  
+                    or string.find(v.Name, "Cave ") 
+                    or string.find(v.Name, "Thug") 
+                    or string.find(v.Name, "Gunslinger")
+                    or string.find(v.Name, "Gunner") 
+                    or string.find(v.Name, "Buster") 
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+page9:Line()
+page9:Label("┇ AUTO TELEPORT TO MOB ┇")
+page9:Line()
+farmdis = 0
+page9:Slider("Farm Distance", 0,20, 0,function(dis)
 farmdis = dis
 end)
-page9:Toggle("Teleport To Mob (Include Krizma Cave)",false,function(req)
+farmheight = 15
+page9:Slider("Farm Height", 0,20, 15,function(diss)
+farmheight = diss
+end)
+page9:Toggle("Teleport To Mob (FARM ALL)",false,function(req)
 getgenv().c = req
 while getgenv().c do wait()
 pcall(function()
@@ -2790,7 +3571,7 @@ pcall(function()
 repeat wait()
 pcall(function()
 if getgenv().c == true and v.Humanoid.Health > 0 then 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(farmdis,0,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,farmheight,farmdis)
 end
 end)
 until v.Humanoid.Health <= 0 or not getgenv().c
@@ -2799,7 +3580,7 @@ end
 end)
 end
 end)
-    page9:Toggle("Teleport To Mob (Except Krizma Cave)",false,function(mob)
+    page9:Toggle("Teleport To Mob (NO GUNNER)",false,function(mob)
 getgenv().a = mob
 while getgenv().a do wait()
 pcall(function()
@@ -2811,7 +3592,7 @@ pcall(function()
 repeat wait()
 pcall(function()
 if getgenv().a == true and v.Humanoid.Health > 0 then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(farmdis,0,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,farmheight,farmdis)
 end
 end)
 until v.Humanoid.Health <= 0 or not getgenv().a
@@ -3884,7 +4665,7 @@ end
 end)
 
     page2:Line()
-        page2:Label("┇  EXPERTISE ┇ ")
+        page2:Label("┇  EXPERTISE AND FISH QUEST ┇ ")
             page2:Line()
          page2:Toggle("Auto Get Expertise",false,function(bool)
                 getgenv().autoexp = bool
@@ -3894,10 +4675,47 @@ workspace:WaitForChild("Merchants"):WaitForChild("ExpertiseMerchant"):WaitForChi
 end)
                 end
     end)
+            page2:Line()
+            page2:Toggle("Auto Get Fish Quest",false,function(bool11)
+getgenv().tre = bool11
+while getgenv().tre do wait()
+pcall(function()
+workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+wait(2)
+end)
+end
+end)
+            page2:Toggle("Auto Do Quest",false,function(bool00)
+getgenv().tret = bool00
+while getgenv().tret do wait()
+pcall(function()
+if game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Package") then
+                            game.Players.LocalPlayer.Backpack:FindFirstChild("Package").Parent = game.Players.LocalPlayer.Character
+                            elseif game.Players.LocalPlayer.Character:FindFirstChild("Package") then
+ for _,v in pairs(game.Workspace.Merchants:GetChildren()) do
+if string.find(v.Name, "Aff") or string.find(v.Name, "Drink") or string.find(v.Name, "Boat") or string.find(v.Name, "Emote") or string.find(v.Name, "Exp") or string.find(v.Name, "Fish") or string.find(v.Name, "Flail") or string.find(v.Name, "Krizma") or string.find(v.Name, "QuestFish") or string.find(v.Name, "QuestMe") or string.find(v.Name, "Sniper") or string.find(v.Name, "Sword") and v:FindFirstChild("HumanoidRootPart") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame + Vector3.new(1, 0, 0)
+wait(0.2)
+end
+game.Players.LocalPlayer.Character.Package:Activate()
+end
+end
+end)
+end
+end)
+
      page2:Line()
     page2:Label(" ┇ HAKI FARM ┇ ")
         page2:Line()
-    
+    page2:Toggle("Auto Get Haki (1000Level)", false, function(bool122)
+getgenv().haki = bool122
+while getgenv().haki do wait()
+pcall(function()
+workspace:WaitForChild("Merchants"):WaitForChild("QuestHakiMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+wait(2)
+end)
+end
+end)
     page2:Toggle("Haki Drain", false, function(bool)
             getgenv().autohaki = bool
     function hakiauto()
@@ -4509,9 +5327,13 @@ end)
     
        end
     )
-    hakitarget = 10
-    page2:Slider("Haki Target %",  1, 100,10,function(gmm)
+    hakitarget = 25
+    page2:Slider("Haki Target %",  1, 100,25,function(gmm)
     hakitarget = gmm
+    end)
+        hakispeed = 5
+    page2:Slider("Haki Speed",  1, 20,5,function(gttmm)
+    hakispeed = gttmm
     end)
     page2:Toggle("Auto Farm Haki",false, function(vccl)
     getgenv().concuvm = vccl
@@ -4541,7 +5363,7 @@ if game.Workspace.UserData["User_"..plrid].HakiBar.Value > sss and getgenv().con
     end
     local ehh = game.Players.LocalPlayer.Name
     local Final = lol(ehh)
-    
+for i = 1,hakispeed do
     local args = {
         [1] = "Off",
         [2] = 1
@@ -4554,6 +5376,7 @@ if game.Workspace.UserData["User_"..plrid].HakiBar.Value > sss and getgenv().con
     }
     
     workspace.UserData["User_"..Final].III:FireServer(unpack(args))
+    end
     elseif game.Workspace.UserData["User_"..plrid].HakiBar.Value <= sss and getgenv().concuvm == true then
         local args = {
         [1] = "Off",
@@ -5563,29 +6386,57 @@ end)
         Event:FireServer(A_1, A_2)
                             end
                         )
-    page5:Line()
-    page5:Label(" ┇ KILL ALL PLAYER ┇")
-    page5:Line()       
-    page5:Toggle("Quake Kill All",false, function(qare)
-    getgenv().vcm = qare
-        while getgenv().vcm do wait()
-    pcall(function()
-local x = getsenv(game:GetService("Players").LocalPlayer.Character.Powers.Quake)
-local vp = x.VTCebvc
-for i,v in pairs(game.Players:GetChildren()) do
-if v.Name ~= game.Players.LocalPlayer.Name then
-for i,c in pairs(game.Workspace:GetChildren()) do
-if c:IsA("Model") and c.Name == v.Name then
-game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(vp,"QuakePower4", "StopCharging",workspace.IslandCaver.Stones.Stone,c.HumanoidRootPart.CFrame,100,Vector3.new(-290.4129333496094, 266.8401794433594, -103.8988037109375))
-end
-end
-end
-end
+page5:Line()
+    page5:Label(" ┇ MISC SKILL ┇ ")
+        page5:Line()
+        page5:Toggle("100% Skill", false, function(trueettreo)
+        _G.auto100rate = trueettreo
+        end)
+        page5:Toggle("Anti Stun", false, function(bool)
+        getgenv().antistun = bool
+        while getgenv().antistun do wait()
+            pcall(function()
+local plr = game.Players.LocalPlayer.Character
+    repeat
+plr.BurnMagmaOverTime.Value = true
+plr.BurnOverTime.Value = true
+plr.CandyTouched.Value = true
+plr.Cheshire.Value = true
+plr.ChillyPunched.Value = true
+plr["DF_Disabled"].Value = false
+plr.GasPoison.Value = true
+plr.GasAirless.Value = true
+plr.GravityCrushed.Value = true
+plr.HeartStolen.Value = true
+plr.Hobbied.Value = true
+plr.HotBody.Value = true
+plr.HypnosisOnCooldown.Value = true
+plr.LoveStunned.Value = true
+plr.Mored.Value = true
+plr.Negative.Value = true
+plr.OpeSevered.Value = true
+plr.Returned.Value = true
+plr.RumbleStun.Value = true
+plr.SanguineVampiris.Value = true
+plr.SnowTouched.Value = true
+plr.Stringing.Value = true
+plr.VenomDoT.Value = true
+wait(0.06)
+    until plr.Humanoid.Health == 0
 end)
 end
 end)
-
-
+page5:Toggle("Auto Buso",false,function(fghrtywer)
+getgenv().wmpmrewpg = fghrtywer
+local plrid = tostring(game.Players.LocalPlayer.UserId)
+local plr = tostring(game.Players.LocalPlayer)
+while getgenv().wmpmrewpg do wait()
+pcall(function()
+workspace:WaitForChild("UserData"):WaitForChild("User_"..plrid):WaitForChild("UpdateHaki"):FireServer()
+wait(3)
+end)
+end
+end)
 page5:Line()
     page5:Label(" ┇ ABOUT PLAYER ┇")
         page5:Line()
@@ -5610,11 +6461,11 @@ page5:Line()
                 Player:Add(v.Name)
             end
         end)
-                            distance = 4
-        page5:Slider("Distance",  0, 100,4,function(bool)
+                            distance = 15
+        page5:Slider("Distance",  0, 50,15,function(bool)
             distance = bool
         end)
-        page5:Toggle("Teleport Behind (Distance)",false,function(bool)
+        page5:Toggle("Teleport To Camp (Distance)",false,function(bool)
             KillPlayer = bool
         end)
         page5:Toggle("Bring Player",false,function(bool)
@@ -5644,11 +6495,13 @@ page5:Line()
             spawn(function()
             while wait() do
                 if KillPlayer then
-                    game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.CFrame * CFrame.new(0,0,distance)
-                    game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                    game:GetService'VirtualUser':CaptureController()
-                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                repeat wait()
+                pcall(function()
+if KillPlayer == true and game.Players:FindFirstChild(SelectedKillPlayer).Character.Humanoid.Health > 0 then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.CFrame * CFrame.new(0,distance,0)
+end
+end)
+                    until game.Players:FindFirstChild(SelectedKillPlayer).Character.Humanoid.Health <= 0 or not KillPlayer
                 end
             end
         end)
@@ -5711,23 +6564,23 @@ page5:Line()
     page5:Line()
     
     page5:Toggle("Quake Camp" , false, function(state)
-if state then
-_G.AutoQuake = true
+_G.AutoQuake = state
 local x = getsenv(game:GetService("Players").LocalPlayer.Character.Powers.Quake)
 local vp = x.VTCebvc
 while _G.AutoQuake do
     wait()
+    repeat wait()
     pcall(function()
+    if _G.AutoQuake == true and game.Players:FindFirstChild(SelectedKillPlayer).Character.Humanoid.Health > 0 then
     for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
         if v.Name == Choose2 then
             game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(vp,"QuakePower4", "StopCharging",workspace.IslandCaver.Stones.Stone,v.HumanoidRootPart.CFrame,100,Vector3.new(-290.4129333496094, 266.8401794433594, -103.8988037109375))
         end
     end
-    end)
     end
-else
-    _G.AutoQuake = false
-end
+    end)
+    until game.Players:FindFirstChild(SelectedKillPlayer).Character.Humanoid.Health <= 0 or not _G.AutoQuake
+    end
 end)
 ----------
 page5:Toggle("Light Camp" ,false, function(campbylight)
@@ -5738,6 +6591,8 @@ local x = getsenv(game:GetService("Players").LocalPlayer.Character.Powers.Light)
 local lightcode = x.VTCrv
     for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
         if v.Name == Choose2 then
+game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(lightcode,"LightPower2", "StartCharging",CFrame.new(Vector3.new(-1037.58544921875, 215.7229461669922, -5000.449951171875), Vector3.new(-0.7139230966567993, -0.5779988169670105, 0.39526084065437317)),workspace.IslandCaver.Stones.Stone, 100)
+wait()
 local args = {
     [1] = lightcode,
     [2] = "LightPower2",
@@ -5753,7 +6608,7 @@ game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireSe
 end)
  end
 end)
-         page5:Toggle("DARK CAMP",false, function(bool)
+         page5:Toggle("Dark Camp",false, function(bool)
             _G.Dark = bool
             end)
         spawn(function()
@@ -5784,9 +6639,187 @@ game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireSer
 end
 end
 end)
+-----------
+page5:Toggle("Sand Camp" ,false, function(campbysand)
+getgenv().campsand = campbysand
+ while getgenv().campsand do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "SandPower8",
+    [3] = "Create",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandPirate"):WaitForChild("Base"):WaitForChild("Beach")
+}
 
+game:GetService("Players").LocalPlayer.Character.Powers.Sand.RemoteEvent:FireServer(unpack(args))
+        end
+        end
+end)
+ end
+end)
+--------------
+         page5:Toggle("Magma Camp",false, function(bo12ol)
+            getgenv().pqwek = bo12ol
+while getgenv().pqwek do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "MagmaPower1",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-123.28974914550781, 213, -871.10595703125, 0.9992225766181946, -0.009072019718587399, 0.038368139415979385, -0, 0.9731666445732117, 0.23010201752185822, -0.03942607715725899, -0.22992312908172607, 0.9724099040031433),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+    [7] = "Right"
+}
 
+game:GetService("Players").LocalPlayer.Character.Powers.Magma.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "MagmaPower1",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+    [6] = 100
+}
 
+game:GetService("Players").LocalPlayer.Character.Powers.Magma.RemoteEvent:FireServer(unpack(args))       
+wait()
+end
+ end
+end)
+ end
+end)
+---------
+         page5:Toggle("Gas Camp",false, function(bo12oyl)
+            getgenv().pqwekgg = bo12oyl
+while getgenv().pqwekgg do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "GasPower4",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1689.326904296875, 213, 9976.861328125, 0.9961590766906738, -0.06699453294277191, 0.056381046772003174, -0, 0.6438990831375122, 0.7651103138923645, -0.08756192773580551, -0.7621715664863586, 0.6414259076118469),
+    [5] = workspace:WaitForChild("IslandKai"):WaitForChild("Folder"):WaitForChild("FourIce"),
+    [7] = "Right"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "GasPower4",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandKai"):WaitForChild("Folder"):WaitForChild("FourIce"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent:FireServer(unpack(args))
+wait()
+end
+ end
+end)
+ end
+end)
+--------
+         page5:Toggle("Flare Camp",false, function(bo12oylggg)
+            getgenv().ghtehjt = bo12oylggg
+while getgenv().ghtehjt do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "FlarePower2",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-143.0747833251953, 218, -994.1463012695312, 0.9986038208007812, -0.013327144086360931, 0.051116567105054855, 9.313225746154785e-10, 0.9676525592803955, 0.2522869408130646, -0.05282533913850784, -0.2519347071647644, 0.966301441192627),
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Union"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "FlarePower2",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Union"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+wait()
+end
+ end
+end)
+ end
+end)
+--------
+         page5:Toggle("Bomb Camp (Skill 2)",false, function(bo12oylggqqweg)
+            getgenv().ghteqweqwehjrrt = bo12oylggqqweg
+while getgenv().ghteqweqwehjrrt do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower2",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+end
+ end
+end)
+ end
+end)
+--------
+         page5:Toggle("Bomb Camp (Skill 5)",false, function(bo12oylggqweg)
+            getgenv().ghteqweqwehjt = bo12oylggqweg
+while getgenv().ghteqweqwehjt do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v.Name == Choose2 then
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower5",
+    [3] = "StartCharging",
+    [4] = CFrame.new(-1039.5162353515625, 214, 1886.921875, 0.2717759311199188, 0.3374144434928894, -0.9012709856033325, -0, 0.9365211129188538, 0.35061126947402954, 0.9623605608940125, -0.09528770297765732, 0.254523903131485),
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [7] = "Left"
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "BombPower5",
+    [3] = "StopCharging",
+    [4] = v.HumanoidRootPart.CFrame,
+    [5] = workspace:WaitForChild("IslandCaver"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+wait()
+end
+ end
+end)
+ end
+end)
+--------
 page6:Line()
     page6:Label("┇ Spam Fruit Skill ┇")
     page6:Line()
@@ -6006,14 +7039,6 @@ page6:Line()
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
         end
     end)
-    page8:Line()
-    page8:Label("DISCORD SERVER")
-        page8:Line()
-           page8:Button("Copy Link", function()
-            Flux:Notification("Copied To Clipboard","OK")
-                setclipboard("https://discord.gg/nSF2sFEjkv")
-                toclipboard("https://discord.gg/nSF2sFEjkv")
-           end)
     page8:Line()
         page8:Label("SERVER")
             page8:Line()
@@ -6371,3 +7396,6 @@ end)
     end)
     end
     end
+if _G.WhiteListed == false then 
+game.Players.LocalPlayer:Kick("KICKED      IRENHUB Notify: Go Buy Script")
+end
