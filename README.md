@@ -6761,9 +6761,9 @@ end)
             while wait() do
                 if _G.Dark then
 local x = getsenv(game:GetService("Players").LocalPlayer.Character.Powers.Dark)
-local v = x.VTCjebaj
+local vttttt = x.VTCjebaj
                 local args = {
-    [1] = v,
+    [1] = vttttt,
     [2] = "DarkPower4",
     [3] = "StartCharging",
     [4] = CFrame.new(-102.340569, 213, 215.227097, -0.982314944, -0.125758141, 0.138716429, -0, 0.74086374, 0.671655476, -0.187236086, 0.659777224, -0.727761507),
@@ -6772,8 +6772,9 @@ local v = x.VTCjebaj
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+wait()
 local args = {
-    [1] = v,
+    [1] = vttttt,
     [2] = "DarkPower4",
     [3] = "StopCharging",
     [4] = CFrame.new(719.440735, 238.200012, 1191.39868, -0.999717414, -0.0117071513, 0.0206902344, -0, 0.870334446, 0.492461145, -0.0237727407, 0.492321968, -0.870088458),
