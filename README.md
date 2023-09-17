@@ -1,5 +1,9 @@
 local Pedo = {
     1135910299, -- Havelic
+    1619950875, -- Pixel_SkillzSPIN2
+    1581720092, -- Pixel_SkillzSPIN
+    1661505948, -- Pixel_SkillzBARRIER
+    679804290, -- Pixel_Skillz
     520944, -- Oblivic
     43247021, -- BowTiedPony
     2350183594, -- icydragonwingsis
@@ -35,7 +39,6 @@ game:GetService("Players").PlayerAdded:Connect(function(r)
         end
     end
 end)  
-
 _G.WhiteListed = true
 if _G.WhiteListed then
   if game.placeId == 8569358381 or game.placeId == 3237168 then
@@ -2435,7 +2438,27 @@ local remotes = {}
  
     return tmp
  end
-                local win = Flux:Window("SALUNA (F6)", "MADE BY IRENKISS", Color3.fromRGB(0,166,58), Enum.KeyCode.F2)
+ local plr = game.Players.LocalPlayer.Character.Name
+game.StarterGui:SetCore("SendNotification", {
+            Title = "This Messenge Sent From Saluna With Love",
+            Text = "Welcome To My Script! " ..plr,
+            Duration = 15
+          })
+          wait()
+game.StarterGui:SetCore("SendNotification", {
+            Title = "This Messenge Sent From Saluna With Love",
+            Text = "THIS SCRIPT IS MADE BY IRENKISS.",
+            Duration = 15
+          })
+          wait()
+game.StarterGui:SetCore("SendNotification", {
+            Title = "This Messenge Sent From Saluna With Love",
+            Text = "DON'T ABUSE THIS SCRIPT TOO MUCH.",
+            Duration = 15
+          })
+          wait()
+ 
+                local win = Flux:Window("SALUNA (F13)", "MADE BY IRENKISS", Color3.fromRGB(0,166,58), Enum.KeyCode.F2)
                 Flux:Notification("ANTI-STAFF AUTOMATICALLY TURNED ON PRESS F2 TO HIDE/SHOW GUI","OK")
         local page2 = win:Tab("FARMING", "http://www.roblox.com/asset/?id=9391995844")
         local page3 = win:Tab("ISLAND/TELEPORT", "http://www.roblox.com/asset/?id=9391995844")
@@ -2822,12 +2845,12 @@ game:GetService("Workspace").LocalPlayer.CharacterTrait.Health = 0
             end)
         end
     end)
-       page9:Toggle("Auto Spawn",_G.AutoSpawn,function(spawn)
-            _G.AutoSpawn = spawn
+       page9:Toggle("Auto Spawn",false,function(spawn)
+            _G.AutoSpawnn = spawn
         end)
             spawn(function()
             while wait() do
-                if _G.AutoSpawn then
+                if _G.AutoSpawnn then
                     pcall(function()
                         if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
                             repeat wait(3)
@@ -3296,7 +3319,7 @@ end)
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
-            if getgenv().e or getgenv().c or getgenv().a or getgenv().t or getgenv().emladepnwwhat or getgenv().emladepnhat then
+            if getgenv().tret or getgenv().e or getgenv().c or getgenv().a or getgenv().t or getgenv().emladepnwwhat or getgenv().emladepnhat then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -3305,7 +3328,7 @@ spawn(function() -- autofarm velocity
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  getgenv().e == false or getgenv().c == false or getgenv().a == false or getgenv().t == false or getgenv().emladepnwwhat == false or getgenv().emladepnhat == false then
+            elseif getgenv().tret == false or  getgenv().e == false or getgenv().c == false or getgenv().a == false or getgenv().t == false or getgenv().emladepnwwhat == false or getgenv().emladepnhat == false then
                 --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
                 wait(1)
@@ -4166,11 +4189,27 @@ end)
                 end
             end
         end)
-        
+                    page2:Toggle("Auto Spawn",false,function(spawn)
+            _G.wekqwe = spawn
+        end)
+            spawn(function()
+            while wait() do
+                if _G.wekqwe then
+                    pcall(function()
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                             wait(5)
+   for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                                    v.Function()
+                                end
+                        end
+                    end)
+                end
+            end
+            end)
     page2:Line()
     page2:Label("┇  ALT FARMING ┇ ")
         page2:Line()
-    page2:Toggle("Auto Spawn",_G.AutoSpawn,function(spawn)
+    page2:Toggle("Auto Spawn (FARM ALT)",false,function(spawn)
             _G.AutoSpawn = spawn
         end)
             spawn(function()
@@ -4178,7 +4217,7 @@ end)
                 if _G.AutoSpawn then
                     pcall(function()
                         if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                            repeat wait(4)
+                            repeat wait(5)
                                 for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
                                     v.Function()
                                 end
@@ -4293,8 +4332,7 @@ page2:Toggle(
                 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                     if v:IsA("Tool") and string.find(v.Name, "Juice") or string.find(v.Name, "Milk") or string.find(v.Name, "Cider") or string.find(v.Name, "Lemonade") or string.find(v.Name, "Smoothie") or string.find(v.Name, "Golden") then
                                             game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            v:Active()
                                         end
                                     end
             end)
@@ -4639,10 +4677,11 @@ end)
             page2:Line()
          page2:Toggle("Auto Get Expertise",false,function(bool)
                 getgenv().autoexp = bool
-                while getgenv().autoexp do wait(5)
+                while getgenv().autoexp do wait()
                     pcall(function()
 workspace:WaitForChild("Merchants"):WaitForChild("ExpertiseMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
 end)
+wait(5)
                 end
     end)
 
@@ -4719,12 +4758,14 @@ if game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Play
                             game.Players.LocalPlayer.Backpack:FindFirstChild("Package").Parent = game.Players.LocalPlayer.Character
                             elseif game.Players.LocalPlayer.Character:FindFirstChild("Package") then
  for _,v in pairs(game.Workspace.Merchants:GetChildren()) do
-if string.find(v.Name, "Aff") or string.find(v.Name, "Drink") or string.find(v.Name, "Boat") or string.find(v.Name, "Emote") or string.find(v.Name, "Exp") or string.find(v.Name, "Fish") or string.find(v.Name, "Flail") or string.find(v.Name, "Krizma") or string.find(v.Name, "QuestFish") or string.find(v.Name, "QuestMe") or string.find(v.Name, "Sniper") or string.find(v.Name, "Sword") and v:FindFirstChild("HumanoidRootPart") then
+if string.find(v.Name, "Aff") or string.find(v.Name, "Heavy") or string.find(v.Name, "Drink") or string.find(v.Name, "Boat") or string.find(v.Name, "Emote") or string.find(v.Name, "Exp") or string.find(v.Name, "Fish") or string.find(v.Name, "Flail") or string.find(v.Name, "Krizma") or string.find(v.Name, "QuestFish") or string.find(v.Name, "QuestMe") or string.find(v.Name, "Friend") or string.find(v.Name, "Sniper") or string.find(v.Name, "Sword") and v:FindFirstChild("HumanoidRootPart") then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame + Vector3.new(1, 0, 0)
-wait(0.2)
+wait(0.3)
 end
 game.Players.LocalPlayer.Character.Package:Activate()
 end
+elseif not game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Compass") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((math.random(-100000, 100000)), 10000, (math.random(-100000, 100000)))
 end
 end)
 end
@@ -4735,9 +4776,9 @@ getgenv().fishing = coqewprcauca
     while getgenv().fishing do wait()
         pcall(function()
 if getgenv().fishing then
-wait(0.5)
+wait(0.1)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["fishingplace"].CFrame * CFrame.new(0, 3, 0)
-wait(0.5)
+wait(0.1)
 for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 if string.find(v.Name, "Rod") then
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
@@ -4751,7 +4792,7 @@ if string.find(x.Name, "Rod") then
 for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 if v:FindFirstChild("Bobber") then
 if v.Bobber.Effect.Enabled == true then
-wait(0.6)
+wait(0.1)
 
 local args = {
 [1] = Vector3.new(20837,-3017,-4390)
@@ -5479,9 +5520,9 @@ end
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
         else
          game.StarterGui:SetCore("SendNotification", {
-            Title = "Dum Hub",
-            Text = "Rayleigh did not spawn.",
-            Duration = 4
+            Title = "This Messenge Sent From Saluna With Love",
+            Text = "Rayleigh haven't spawned yet.",
+            Duration = 3
           })
     
         end
@@ -6761,9 +6802,9 @@ end)
             while wait() do
                 if _G.Dark then
 local x = getsenv(game:GetService("Players").LocalPlayer.Character.Powers.Dark)
-local vttttt = x.VTCjebaj
+local vtcccq = x.VTCjebaj
                 local args = {
-    [1] = vttttt,
+    [1] = vtcccq,
     [2] = "DarkPower4",
     [3] = "StartCharging",
     [4] = CFrame.new(-102.340569, 213, 215.227097, -0.982314944, -0.125758141, 0.138716429, -0, 0.74086374, 0.671655476, -0.187236086, 0.659777224, -0.727761507),
@@ -6774,7 +6815,7 @@ local vttttt = x.VTCjebaj
 game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
 wait()
 local args = {
-    [1] = vttttt,
+    [1] = vtcccq,
     [2] = "DarkPower4",
     [3] = "StopCharging",
     [4] = CFrame.new(719.440735, 238.200012, 1191.39868, -0.999717414, -0.0117071513, 0.0206902344, -0, 0.870334446, 0.492461145, -0.0237727407, 0.492321968, -0.870088458),
@@ -6783,6 +6824,7 @@ local args = {
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+wait()
 end
 end
 end)
