@@ -4325,14 +4325,14 @@ wait(15)
 end
 end)
 page2:Toggle(
-        "Auto Drink Mixer",false,function(bool)
-        getgenv().autodrinkmixer = bool
-        while getgenv().autodrinkmixer do wait(2)
+        "Auto Drink Mixer",false,function(poola)
+        getgenv().autodrinkmixer = poola
+        while getgenv().autodrinkmixer do wait(4)
             pcall(function()
                 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                     if v:IsA("Tool") and string.find(v.Name, "Juice") or string.find(v.Name, "Milk") or string.find(v.Name, "Cider") or string.find(v.Name, "Lemonade") or string.find(v.Name, "Smoothie") or string.find(v.Name, "Golden") then
                                             game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                                            v:Active()
+v:Activate()
                                         end
                                     end
             end)
