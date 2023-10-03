@@ -1,2 +1,3 @@
+repeat wait() until game:IsLoaded()
 _G.bypasschothgngukhoi = true
-loadstring(game:HttpGet('https://raw.githubusercontent.com/SalunaDevoz/dcmsv/main/g1'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/AdamFatherOfCreator/IDK/main/README.md'))()
